@@ -344,7 +344,7 @@
     }
 
     // Envio do formulário + redirecionamento para o WhatsApp
-    qs('#leadForm').addEventListener('submit', async (e)=>{
+    qs('#leadForm').addEventListener('submit', async (e) => {
         e.preventDefault();
         const btn = qs('#ctaJoin');
         const name = qs('#name').value.trim();
@@ -352,59 +352,78 @@
         const phone = qs('#phone').value.trim();
         const consent = qs('#consent').checked;
 
-        if(!name){ alert('Informe seu nome.'); return; }
-        if(!validEmail(email)){ alert('Informe um e-mail válido.'); return; }
-        if(!consent){ alert('Você precisa aceitar o consentimento para prosseguir.'); return; }
+        if (!name) { alert('Informe seu nome.'); return; }
+        if (!validEmail(email)) { alert('Informe um e-mail válido.'); return; }
+        if (!consent) { alert('Você precisa aceitar o consentimento para prosseguir.'); return; }
 
-        btn.disabled = true; btn.textContent = "Enviando...";
+        // Desabilita o botão e altera o texto
+        btn.disabled = true;
+        btn.textContent = "Enviando...";
+
         const payload = {
-        name, email, phone,
-        utm_source: qs('#utm_source').value,
-        utm_medium: qs('#utm_medium').value,
-        utm_campaign: qs('#utm_campaign').value,
-        utm_content: qs('#utm_content').value,
-        utm_term: qs('#utm_term').value,
-        page: location.href,
-        timestamp: new Date().toISOString()
+            name, email, phone,
+            utm_source: qs('#utm_source').value,
+            utm_medium: qs('#utm_medium').value,
+            utm_campaign: qs('#utm_campaign').value,
+            utm_content: qs('#utm_content').value,
+            utm_term: qs('#utm_term').value,
+            page: location.href,
+            timestamp: new Date().toISOString()
         };
 
         // Tracking básico (pode integrar ao seu GTM)
         window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({event:"lead_submit", lead: payload});
+        window.dataLayer.push({ event: "lead_submit", lead: payload });
 
-        try{
-        if (FORM_ENDPOINT){
-            await fetch(FORM_ENDPOINT, {
-            method: "POST",
-            headers: {"Content-Type":"application/json"},
-            body: JSON.stringify(payload),
-            mode: "no-cors" // permite seguir mesmo sem CORS explícito
-            });
-        } else {
-            // fallback local (salvar no localStorage para testes)
-            const k = "leads_local";
-            const arr = JSON.parse(localStorage.getItem(k) || "[]");
-            arr.push(payload);
-            localStorage.setItem(k, JSON.stringify(arr));
-        }
-        }catch(err){
-        console.warn("Falha ao enviar lead (seguiremos com o redirecionamento):", err);
-        }finally{
-        // Redireciona para o grupo (e adiciona utm_source=lp)
-        const url = new URL(WHATSAPP_GROUP_URL);
-        // Para links 'chat.whatsapp.com' não aceitam UTM, então só navegamos:
-        window.location.href = url.toString();
+        // Envia o evento 'Lead' para o Facebook Pixel
+        fbq('track', 'Lead');
+
+        try {
+            if (FORM_ENDPOINT) {
+                await fetch(FORM_ENDPOINT, {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(payload),
+                    mode: "no-cors" // permite seguir mesmo sem CORS explícito
+                });
+            } else {
+                // fallback local (salvar no localStorage para testes)
+                const k = "leads_local";
+                const arr = JSON.parse(localStorage.getItem(k) || "[]");
+                arr.push(payload);
+                localStorage.setItem(k, JSON.stringify(arr));
+            }
+        } catch (err) {
+            console.warn("Falha ao enviar lead (seguiremos com o redirecionamento):", err);
+        } finally {
+            // Redireciona para o grupo (e adiciona utm_source=lp)
+            const url = new URL(WHATSAPP_GROUP_URL);
+            // Para links 'chat.whatsapp.com' não aceitam UTM, então só navegamos:
+            window.location.href = url.toString();
         }
     });
 
     // Clique no CTA secundário — evento
-    qs('#ctaDirect').addEventListener('click', ()=>{
+    qs('#ctaDirect').addEventListener('click', () => {
         window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({event:"cta_direct_click"});
+        window.dataLayer.push({ event: "cta_direct_click" });
+
+        // Envia o evento 'Lead' para o Facebook Pixel
+        fbq('track', 'Lead');
     });
 
     // Acessibilidade: enter no checkbox não deve submeter
     qs('#consent').addEventListener('keydown', (e)=>{ if(e.key === 'Enter'){ e.preventDefault(); }});
+</script>
+<script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.queue=[];
+  t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+  
+  fbq('init', '1317112696738292'); // Seu Pixel ID
+  fbq('track', 'PageView'); // Rastreia a visita da página
 </script>
 </body>
 </html>
