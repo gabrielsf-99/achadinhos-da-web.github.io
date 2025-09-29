@@ -6,424 +6,293 @@
   <title>Achadinhos da Web no WhatsApp — Entre e Economize Todo Dia</title>
   <meta name="description" content="Entre no nosso grupo VIP no WhatsApp e receba ofertas quentes da web antes de todo mundo. Lugares limitados." />
   <link rel="icon" href="favicon.ico" />
-  <!-- Open Graph -->
   <meta property="og:title" content="Achadinhos da Web no WhatsApp" />
   <meta property="og:description" content="Receba alertas de ofertas quentes, cupons e erros de preço. Lugares limitados." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://via.placeholder.com/1200x630.png?text=Clube+de+Ofertas+WhatsApp" />
   <style>
     :root{
       --bg:#0b132b; --card:#121b3a; --text:#e6e9ef; --muted:#aab2c8;
-      --brand:#25D366; --accent:#5bc0be; --danger:#ff6b6b; --ok:#2ed573;
-      --shadow:0 15px 35px rgba(0,0,0,.35);
+      --brand:#25D366; --accent:#5bc0be; --shadow:0 15px 35px rgba(0,0,0,.35);
       --radius:14px;
     }
     *{box-sizing:border-box}
     body{
       margin:0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color:var(--text); background:
-        radial-gradient(80% 60% at 20% 10%, #1f2a56 0%, transparent 60%),
-        radial-gradient(70% 50% at 80% 0%, #0e1a3f 0%, transparent 60%),
-        var(--bg);
+      color:var(--text); 
+      background: radial-gradient(80% 60% at 20% 10%, #1f2a56 0%, transparent 60%),
+                  radial-gradient(70% 50% at 80% 0%, #0e1a3f 0%, transparent 60%),
+                  var(--bg);
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
     }
-    a{color:var(--accent); text-decoration:none}
-    .wrap{max-width:1120px; margin:0 auto; padding:28px}
-    header{
-      display:flex; align-items:center; justify-content:space-between; gap:12px;
-      padding:8px 0 20px;
+    .container{
+      max-width:680px;
+      width:100%;
     }
-    .logo{display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.3px}
-    .logo-badge{
-      width:40px; height:40px; border-radius:10px; display:grid; place-items:center;
-      background:linear-gradient(135deg, #1ddf86, #25D366 60%, #128C7E); color:#061a10; font-weight:900;
-      box-shadow:var(--shadow)
-    }
-    .trust{
-      display:flex; gap:14px; align-items:center; color:var(--muted); font-size:.92rem;
-      flex-wrap:wrap;
-    }
-    .hero{
-      display:grid; grid-template-columns: 1.1fr .9fr; gap:28px; align-items:stretch;
-    }
-    @media (max-width: 920px){ .hero{grid-template-columns:1fr} }
     .card{
       background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.01));
       border:1px solid rgba(255,255,255,.08);
-      border-radius:var(--radius); box-shadow:var(--shadow);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:48px 40px;
+      text-align:center;
     }
-    .hero-copy{ padding:32px }
+    @media (max-width: 640px){
+      .card{ padding:32px 24px }
+    }
+    .logo{
+      display:inline-flex;
+      align-items:center;
+      gap:12px;
+      font-weight:800;
+      font-size:1.1rem;
+      margin-bottom:24px;
+    }
+    .logo-badge{
+      width:50px;
+      height:50px;
+      border-radius:12px;
+      display:grid;
+      place-items:center;
+      background:linear-gradient(135deg, #1ddf86, #25D366 60%, #128C7E);
+      color:#061a10;
+      font-weight:900;
+      font-size:1.5rem;
+      box-shadow:var(--shadow);
+    }
     .eyebrow{
-      display:inline-flex; gap:8px; align-items:center;
-      background:rgba(37,211,102,.12); border:1px solid rgba(37,211,102,.35);
-      color:#b6ffd2; padding:6px 10px; border-radius:999px; font-size:.88rem; font-weight:600;
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      background:rgba(37,211,102,.12);
+      border:1px solid rgba(37,211,102,.35);
+      color:#b6ffd2;
+      padding:8px 16px;
+      border-radius:999px;
+      font-size:.9rem;
+      font-weight:600;
+      margin-bottom:20px;
     }
-    h1{ font-size: clamp(1.9rem, 3vw + 1rem, 3.1rem); line-height:1.1; margin:14px 0 }
-    .sub{ color:var(--muted); font-size:1.05rem; margin-bottom:18px }
-    .bullets{ display:grid; gap:10px; margin:18px 0 8px }
-    .bullet{ display:flex; gap:10px; align-items:flex-start }
-    .bullet i{ width:22px; height:22px; border-radius:6px; background:rgba(91,192,190,.2); display:grid; place-items:center; font-style:normal }
-    .urgency{
-      margin:14px 0 20px; padding:10px 12px; border-radius:10px; background:rgba(255,107,107,.1);
-      border:1px solid rgba(255,107,107,.35); color:#ffdede; font-weight:600; display:flex; align-items:center; gap:10px;
+    h1{
+      font-size:clamp(2rem, 4vw, 3.2rem);
+      line-height:1.15;
+      margin:0 0 16px;
     }
-    .hero-form{ padding:22px; }
-    .form-head{ padding:18px 22px 0; }
-    .form-head h3{ margin:0; font-size:1.15rem }
-    .secure{ color:var(--muted); font-size:.9rem; display:flex; gap:8px; align-items:center; margin-top:4px }
-    form{ display:grid; gap:12px; padding:16px 22px 22px }
-    label{ font-size:.93rem }
-    input, select{
-      width:100%; padding:12px 14px; border-radius:12px; border:1px solid rgba(255,255,255,.15);
-      background:rgba(255,255,255,.04); color:var(--text); outline:none;
+    h1 em{
+      font-style:normal;
+      background:linear-gradient(135deg, #1ddf86, #5bc0be);
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      background-clip:text;
     }
-    .consent{ font-size:.86rem; color:var(--muted) }
-    .cta{
-      display:flex; flex-direction:column; gap:10px;
+    .description{
+      color:var(--muted);
+      font-size:1.15rem;
+      line-height:1.6;
+      margin:0 0 32px;
+      max-width:540px;
+      margin-left:auto;
+      margin-right:auto;
     }
-    .btn{
-      appearance:none; border:0; cursor:pointer; text-align:center; font-weight:800;
-      padding:14px 18px; border-radius:14px; transition:.2s transform ease, .2s filter ease;
+    .benefits{
+      display:grid;
+      gap:14px;
+      margin:32px 0;
+      text-align:left;
     }
-    .btn:active{ transform: translateY(1px) }
-    .btn-wa{
+    .benefit{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      padding:16px;
+      background:rgba(255,255,255,.02);
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,.06);
+    }
+    .benefit-icon{
+      width:28px;
+      height:28px;
+      border-radius:8px;
+      background:rgba(91,192,190,.2);
+      display:grid;
+      place-items:center;
+      font-size:1.2rem;
+      flex-shrink:0;
+    }
+    .benefit-text{
+      flex:1;
+    }
+    .benefit-text strong{
+      color:#fff;
+      display:block;
+      margin-bottom:4px;
+    }
+    .benefit-text span{
+      color:var(--muted);
+      font-size:.95rem;
+    }
+    .cta-button{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:12px;
       background:linear-gradient(135deg, #1ddf86, #25D366 55%, #128C7E);
-      color:#062b18; font-size:1.04rem; display:flex; align-items:center; justify-content:center; gap:10px;
+      color:#062b18;
+      font-size:1.2rem;
+      font-weight:800;
+      padding:20px 40px;
+      border-radius:16px;
+      text-decoration:none;
+      border:none;
+      cursor:pointer;
+      transition:.2s transform ease, .2s box-shadow ease;
+      box-shadow:0 10px 30px rgba(37,211,102,.3);
+      margin-top:8px;
     }
-    .btn-ghost{ background:transparent; color:var(--text); border:1px dashed rgba(255,255,255,.25) }
-    .trustbar{
-      display:flex; gap:16px; align-items:center; padding:12px 22px 20px; color:var(--muted); font-size:.86rem; flex-wrap:wrap
+    .cta-button:hover{
+      transform:translateY(-2px);
+      box-shadow:0 15px 40px rgba(37,211,102,.4);
     }
-    .proof{ margin-top:26px; display:grid; grid-template-columns:repeat(3,1fr); gap:16px }
-    @media (max-width: 920px){ .proof{grid-template-columns:1fr} }
-    .quote{ padding:16px; border-radius:14px; background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08) }
-    .quote b{ color:#fff }
-    .grid-2{ display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:36px }
-    @media (max-width: 920px){ .grid-2{grid-template-columns:1fr} }
-    .faq details{ background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); border-radius:12px; padding:14px 16px }
-    .faq summary{ cursor:pointer; font-weight:700; margin-bottom:8px }
-    footer{ color:var(--muted); text-align:center; font-size:.85rem; margin:28px 0 12px }
-    .badge{ font-size:.8rem; padding:4px 8px; border-radius:999px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.12) }
-    .kpis{ display:flex; gap:14px; flex-wrap:wrap }
-    .meter{ height:10px; background:#0c1842; border-radius:999px; overflow:hidden; border:1px solid rgba(255,255,255,.08) }
-    .meter > span{ display:block; height:100%; background:linear-gradient(90deg, #25D366, #5bc0be) }
-    .small{ font-size:.88rem; color:var(--muted) }
-    .hidden{ display:none !important }
+    .cta-button:active{
+      transform:translateY(0);
+    }
+    .trust-badges{
+      display:flex;
+      gap:12px;
+      justify-content:center;
+      flex-wrap:wrap;
+      margin-top:24px;
+      font-size:.88rem;
+      color:var(--muted);
+    }
+    .badge{
+      padding:6px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.12);
+    }
+    .urgency{
+      margin:24px 0;
+      padding:14px 18px;
+      border-radius:12px;
+      background:rgba(255,107,107,.08);
+      border:1px solid rgba(255,107,107,.3);
+      color:#ffdede;
+      font-weight:600;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      font-size:.95rem;
+    }
   </style>
-  <!-- Schema.org for rich snippet -->
-  <script type="application/ld+json">
-  {
-    "@context":"https://schema.org",
-    "@type":"WebSite",
-    "name":"Achadinhos da Web",
-    "url":"https://seudominio.com",
-    "potentialAction":{
-      "@type":"JoinAction",
-      "target":"https://chat.whatsapp.com/KSmgxTqGpWP5JgZ4uUvong?mode=ems_share_t",
-      "name":"Entrar no grupo de ofertas"
-    }
-  }
-  </script>
 </head>
 <body>
-  <div class="wrap">
-    <header aria-label="Topo">
+  <div class="container">
+    <div class="card">
       <div class="logo">
         <div class="logo-badge">%</div>
-        <div>
-          <div style="font-size:1.02rem">Achadinhos da Web</div>
-          <small class="small">Alertas no WhatsApp</small>
-        </div>
-      </div>
-      <div class="trust">
-        <span class="badge">+12k membros</span>
-        <span class="badge">Média de R$ 387 economizados/mês*</span>
-        <span class="badge">Monitoramento 24/7</span>
-      </div>
-    </header>
-
-    <section class="hero">
-      <div class="card hero-copy">
-        <span class="eyebrow">Vagas limitadas • Últimas unidades do mês</span>
-        <h1>Receba <em>ofertas quentes</em>, cupons e erros de preço direto no seu WhatsApp.</h1>
-        <p class="sub">Entre no grupo VIP e seja avisado em tempo real sobre promoções da web. Pare de pagar preço cheio — nós garimpamos as melhores oportunidades para você.</p>
-        <div class="bullets" role="list">
-          <div class="bullet" role="listitem">
-            <i>🚀</i><div><b>Primeiro a saber:</b> ofertas em tempo real antes de esgotarem.</div>
-          </div>
-          <div class="bullet" role="listitem">
-            <i>💸</i><div><b>Economia de verdade:</b> cupons exclusivos e combos escondidos.</div>
-          </div>
-          <div class="bullet" role="listitem">
-            <i>🛡️</i><div><b>Curadoria manual:</b> nada de spam — só negócios que valem a pena.</div>
-          </div>
-        </div>
-
-        <div class="urgency" id="urgency">
-          ⏳ <span><b>Restam <span id="spots">37</span> vagas</b> para este lote. Fecharemos quando atingir 0.</span>
-        </div>
-
-        <div class="kpis">
-          <div class="card" style="padding:14px; flex:1">
-            <div style="display:flex; justify-content:space-between; align-items:center">
-              <div>
-                <b>Chance de esgotar hoje</b><br><span class="small">baseada na velocidade de entradas</span>
-              </div>
-              <span class="badge" id="oddsLabel">Alta</span>
-            </div>
-            <div class="meter" aria-label="Esgotamento">
-              <span style="width:78%" id="oddsBar"></span>
-            </div>
-          </div>
-          <div class="card" style="padding:14px; flex:1">
-            <b>Benefícios do grupo</b>
-            <ul class="small" style="margin:8px 0 0 18px">
-              <li>Alertas instantâneos</li>
-              <li>Ofertas verificadas</li>
-              <li>Zero custo para entrar</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="proof">
-          <div class="quote">“Paguei <b>R$ 1.299</b> no notebook que estava por R$ 2.199. Só vi porque o alerta chegou <b>na hora</b>.” — <b>Camila R.</b></div>
-          <div class="quote">“Em 2 semanas recuperei o valor da minha internet do mês todo. <b>Vale muito!</b>” — <b>Edu G.</b></div>
-          <div class="quote">“Nada de links furados. <b>Curadoria top</b> e sem flood.” — <b>Priscila A.</b></div>
-        </div>
-        <p class="small" style="margin-top:6px">*Estimativa baseada em amostra de usuários ativos no último trimestre.</p>
+        <div>Achadinhos da Web</div>
       </div>
 
-      <aside class="card hero-form" aria-label="Formulário de entrada">
-        <div class="form-head">
-          <h3>Entre de graça no grupo VIP</h3>
-          <div class="secure">🔒 Seus dados são protegidos e usados apenas para contato sobre ofertas.</div>
+      <div class="eyebrow">
+        ✨ Vagas limitadas • Grupo VIP
+      </div>
+
+      <h1>Receba <em>ofertas quentes</em> direto no seu WhatsApp</h1>
+
+      <p class="description">
+        Entre no nosso grupo VIP e seja avisado em tempo real sobre as melhores promoções, cupons exclusivos e erros de preço da web. Pare de pagar preço cheio!
+      </p>
+
+      <div class="benefits">
+        <div class="benefit">
+          <div class="benefit-icon">🚀</div>
+          <div class="benefit-text">
+            <strong>Alertas em tempo real</strong>
+            <span>Saiba das ofertas antes que esgotem</span>
+          </div>
         </div>
-
-        <form id="leadForm" novalidate>
-            <div>
-                <label for="name">Nome</label>
-                <input id="name" name="name" placeholder="Seu primeiro nome" required autocomplete="given-name" />
-            </div>
-            <div>
-                <label for="email">E-mail</label>
-                <input id="email" name="email" type="email" placeholder="voce@email.com" required autocomplete="email" />
-            </div>
-            <div>
-                <label for="phone">WhatsApp (opcional)</label>
-                <input id="phone" name="phone" type="tel" placeholder="(11) 9 9999-9999" autocomplete="tel" />
-            </div>
-
-            <div class="cta">
-                <button type="submit" class="btn btn-wa" id="ctaJoin">
-                <span>💬 Entrar no grupo do WhatsApp</span>
-                </button>
-            </div>
-        </form>
-
-          <!-- Campos UTM populares (preenchidos via JS a partir da URL) -->
-          <input type="hidden" name="utm_source" id="utm_source" />
-          <input type="hidden" name="utm_medium" id="utm_medium" />
-          <input type="hidden" name="utm_campaign" id="utm_campaign" />
-          <input type="hidden" name="utm_content" id="utm_content" />
-          <input type="hidden" name="utm_term" id="utm_term" />
-
-          <div class="consent">
-            <label>
-              <input type="checkbox" id="consent" required />
-              Concordo em receber comunicações sobre ofertas e confirmo a leitura da <a href="#lgpd">Política de Privacidade</a>.
-            </label>
+        
+        <div class="benefit">
+          <div class="benefit-icon">💸</div>
+          <div class="benefit-text">
+            <strong>Economia de verdade</strong>
+            <span>Cupons exclusivos e promoções verificadas</span>
           </div>
-
-          <div class="cta">
-            </button>
-            <!-- CTA secundário direto (para quem não quer preencher): mantenha, mas enfatize o formulário -->
-            <a class="btn btn-ghost" id="ctaDirect" href="https://chat.whatsapp.com/KSmgxTqGpWP5JgZ4uUvong?mode=ems_share_t" target="_blank" rel="noopener nofollow">
-              Entrar direto (sem cadastro)
-            </a>
-          </div>
-
-          <div class="small" style="opacity:.85">
-            Dica: preenchendo o cadastro, você recebe também <b>ofertas exclusivas por e-mail</b>.
-          </div>
-        </form>
-
-        <div class="trustbar">
-          ✅ Cancelamento em 1 clique &nbsp;•&nbsp; 🧹 Sem spam &nbsp;•&nbsp; 🕵️ Links verificados
         </div>
-      </aside>
-    </section>
-
-    <section class="grid-2" aria-label="Como funciona e por que entrar">
-      <div class="card" style="padding:18px 20px">
-        <h3 style="margin-top:4px">Como funciona</h3>
-        <ol class="small" style="line-height:1.7">
-          <li>Você entra no grupo do WhatsApp.</li>
-          <li>Recebe alertas curtos com link e instruções.</li>
-          <li>Compra com desconto antes de esgotar.</li>
-        </ol>
+        
+        <div class="benefit">
+          <div class="benefit-icon">🛡️</div>
+          <div class="benefit-text">
+            <strong>Curadoria manual</strong>
+            <span>Sem spam, só ofertas que valem a pena</span>
+          </div>
+        </div>
       </div>
-      <div class="card" style="padding:18px 20px">
-        <h3 style="margin-top:4px">Por que funciona</h3>
-        <p class="small">Monitoramos várias lojas e usamos automações para detectar quedas de preço e cupons ativos. A curadoria humana filtra o ruído — você só recebe o que vale a pena.</p>
+
+      <div class="urgency">
+        ⏳ <span><b>Restam <span id="spots">37</span> vagas</b> para este mês</span>
       </div>
-    </section>
 
-    <section class="faq" style="margin-top:34px">
-      <h3>Perguntas frequentes</h3>
-      <div class="grid-2">
-        <details>
-          <summary>Tem custo para participar?</summary>
-          <p>Não. O grupo é gratuito. Algumas ofertas podem ser comissionadas, o que nos ajuda a manter o serviço sem te cobrar nada.</p>
-        </details>
-        <details>
-          <summary>Quantas mensagens por dia?</summary>
-          <p>Nosso grupo é fechado, apenas os administradores enviam as ofertas. Portanto, a quantidade de mensagens está associada a quantidade de promoções encontradas na web. Aporveite!</p>
-        </details>
-        <details>
-          <summary>Posso sair quando quiser?</summary>
-          <p>Sim. Você pode sair a qualquer momento pelo próprio WhatsApp, e pode descadastrar seu e-mail com 1 clique.</p>
-        </details>
-        <details>
-          <summary>Que tipos de ofertas aparecem?</summary>
-          <p>Eletrônicos, casa &amp; cozinha, beauty, mercado, viagens, apps e serviços digitais. Sempre com verificação de preço.</p>
-        </details>
+      <a href="https://chat.whatsapp.com/KSmgxTqGpWP5JgZ4uUvong?mode=ems_share_t" 
+         class="cta-button" 
+         target="_blank" 
+         rel="noopener"
+         id="ctaButton">
+        💬 Entrar no Grupo VIP Agora
+      </a>
+
+      <div class="trust-badges">
+        <span class="badge">✅ 100% Gratuito</span>
+        <span class="badge">🔒 Grupo Verificado</span>
+        <span class="badge">🚫 Sem Spam</span>
       </div>
-    </section>
-
-    <section id="lgpd" class="card" style="margin-top:36px; padding:18px 20px">
-      <h4 style="margin:0 0 6px">LGPD & Privacidade</h4>
-      <p class="small">Controlador: <b>Sua Empresa LTDA</b>. Finalidade: comunicação de ofertas e cupons. Base legal: <i>consentimento do titular</i>. Armazenamento seguro e cancelamento a qualquer momento. Consulte <a href="#" rel="nofollow">Política de Privacidade</a> e <a href="#" rel="nofollow">Termos</a>.</p>
-    </section>
-
-    <footer>
-      © <span id="year"></span> Achadinhos da Web — Todos os direitos reservados.
-    </footer>
+    </div>
   </div>
 
   <script>
-    // ====== Configurações básicas ======
-    const WHATSAPP_GROUP_URL = "https://chat.whatsapp.com/KSmgxTqGpWP5JgZ4uUvong?mode=ems_share_t"; // TROQUE AQUI
-    const FORM_ENDPOINT = "https://script.google.com/macros/s/AKfycby6wa5KN4ptR7iOPBB6zBUn0fVBnrkZZv2U3OayupbNZk6Ndq8VN--aCJVmO_EJV3uN/exec"; // URL do seu Web App
-
-    // ====== Utilidades ======
-    const qs = (s, el=document) => el.querySelector(s);
-
-    // Preenche ano no rodapé
-    qs('#year').textContent = new Date().getFullYear();
-
-    // Coleta UTMs automaticamente a partir da URL
-    const params = new URLSearchParams(location.search);
-    ["utm_source","utm_medium","utm_campaign","utm_content","utm_term"].forEach(k=>{
-        const v = params.get(k) || "";
-        const inp = qs('#'+k);
-        if (inp) inp.value = v;
-    });
-
-    // Contador de "vagas" com decréscimo pseudo-aleatório para urgência ética (cliente pode desativar)
+    // Contador de vagas com animação
     (function spotsTicker(){
-        const el = qs('#spots');
-        const base = 37; // pode ajustar
-        const visited = sessionStorage.getItem('spots');
-        let current = visited ? parseInt(visited,10) : base - Math.floor(Math.random()*3);
-        el.textContent = current;
-        setInterval(()=>{
-        if (current>3 && Math.random() < 0.18) { // ~18% chance de reduzir
-            current -= 1;
-            el.textContent = current;
-            sessionStorage.setItem('spots', String(current));
-            // Ajusta barra de esgotamento
-            const w = Math.min(95, 40 + (base - current)*2);
-            qs('#oddsBar').style.width = w + "%";
-            qs('#oddsLabel').textContent = (w>75? "Alta" : w>55? "Média" : "Baixa");
+      const el = document.getElementById('spots');
+      const base = 37;
+      const visited = sessionStorage.getItem('spots');
+      let current = visited ? parseInt(visited,10) : base - Math.floor(Math.random()*3);
+      el.textContent = current;
+      
+      setInterval(() => {
+        if (current > 5 && Math.random() < 0.15) {
+          current -= 1;
+          el.textContent = current;
+          sessionStorage.setItem('spots', String(current));
         }
-        }, 5000);
+      }, 6000);
     })();
 
-    // Validação simples
-    function validEmail(email){
-        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    }
-
-    // Envio do formulário + redirecionamento para o WhatsApp
-    qs('#leadForm').addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const btn = qs('#ctaJoin');
-        const name = qs('#name').value.trim();
-        const email = qs('#email').value.trim();
-        const phone = qs('#phone').value.trim();
-        const consent = qs('#consent').checked;
-
-        if (!name) { alert('Informe seu nome.'); return; }
-        if (!validEmail(email)) { alert('Informe um e-mail válido.'); return; }
-        if (!consent) { alert('Você precisa aceitar o consentimento para prosseguir.'); return; }
-
-        // Desabilita o botão e altera o texto
-        btn.disabled = true;
-        btn.textContent = "Enviando...";
-
-        const payload = {
-            name, email, phone,
-            utm_source: qs('#utm_source').value,
-            utm_medium: qs('#utm_medium').value,
-            utm_campaign: qs('#utm_campaign').value,
-            utm_content: qs('#utm_content').value,
-            utm_term: qs('#utm_term').value,
-            page: location.href,
-            timestamp: new Date().toISOString()
-        };
-
-        // Tracking básico (pode integrar ao seu GTM)
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({ event: "lead_submit", lead: payload });
-
-        // Envia o evento 'Lead' para o Facebook Pixel
+    // Tracking de clique no botão
+    document.getElementById('ctaButton').addEventListener('click', () => {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: "whatsapp_group_click" });
+      
+      // Facebook Pixel (se você usar)
+      if (typeof fbq !== 'undefined') {
         fbq('track', 'Lead');
-
-        try {
-            if (FORM_ENDPOINT) {
-                await fetch(FORM_ENDPOINT, {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(payload),
-                    mode: "no-cors" // permite seguir mesmo sem CORS explícito
-                });
-            } else {
-                // fallback local (salvar no localStorage para testes)
-                const k = "leads_local";
-                const arr = JSON.parse(localStorage.getItem(k) || "[]");
-                arr.push(payload);
-                localStorage.setItem(k, JSON.stringify(arr));
-            }
-        } catch (err) {
-            console.warn("Falha ao enviar lead (seguiremos com o redirecionamento):", err);
-        } finally {
-            // Redireciona para o grupo (e adiciona utm_source=lp)
-            const url = new URL(WHATSAPP_GROUP_URL);
-            // Para links 'chat.whatsapp.com' não aceitam UTM, então só navegamos:
-            window.location.href = url.toString();
-        }
+      }
     });
+  </script>
 
-    // Clique no CTA secundário — evento
-    qs('#ctaDirect').addEventListener('click', () => {
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push({ event: "cta_direct_click" });
-
-        // Envia o evento 'Lead' para o Facebook Pixel
-        fbq('track', 'Lead');
-    });
-
-    // Acessibilidade: enter no checkbox não deve submeter
-    qs('#consent').addEventListener('keydown', (e)=>{ if(e.key === 'Enter'){ e.preventDefault(); }});
-</script>
-<script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.queue=[];
-  t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
-  
-  fbq('init', '1317112696738292'); // Seu Pixel ID
-  fbq('track', 'PageView'); // Rastreia a visita da página
-</script>
+  <!-- Facebook Pixel (opcional - adicione seu ID) -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.queue=[];
+    t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    
+    fbq('init', '1317112696738292');
+    fbq('track', 'PageView');
+  </script>
 </body>
 </html>
